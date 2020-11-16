@@ -80,15 +80,15 @@ public class Controller {
 				System.out.println("Implementando el algoritmo de Dijkstra \n");
 
 				System.out.println("Seleccione el vertice Origen");
-				verticeInicial = Integer.parseInt(lector.next());
+				verticeInicial = 1 ;//Integer.parseInt(lector.next());
 
 				System.out.println("Seleccione el vertice Destino");
-				Verticedestino = Integer.parseInt(lector.next());
+				Verticedestino = 2;// Integer.parseInt(lector.next());
 
 
 				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3) \n 1. Grafo con 5 vertices1 \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices");
 
-				NoVertices = Integer.parseInt(lector.next());
+				NoVertices = 1; //Integer.parseInt(lector.next());
 
 
 				TInicio = System.currentTimeMillis();
