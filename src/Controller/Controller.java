@@ -38,6 +38,8 @@ public class Controller {
 		int[][] grafo5 = null;
 		int[][] grafo100 = null;
 		int[][] grafo1000 = null;
+		int[][] grafoextra = null;
+		Scanner lector = new Scanner(System.in);
 
 
 		try {
@@ -46,10 +48,25 @@ public class Controller {
 			grafo5 = cargarArchivo(GRAFO_DISTANCIA_5,5);
 			grafo100 = cargarArchivo(GRAFO_DISTANCIA_100,100);
 			grafo1000 = cargarArchivo(GRAFO_DISTANCIA_1000,1000);
+			
+			System.out.println("\n"+"Desea cargar un archivo?");
+			String respuesta = lector.next();
+			
+			if(respuesta.equals("si")) {
+				System.out.println("\n"+"Indique la ruta de donde se encuentra el archivo ");
+				String ruta = lector.next();
+				System.out.println("\n"+"Indique el numero de vertices que contiene el grafo");
+				int num = lector.nextInt();
+
+				grafoextra = cargarArchivo(ruta,num);
+				
+			}
+			else {}
+			
 			System.out.println("\n");
 
-			//			System.out.println("grafofinal5"+grafo5[1][0]); //90
-			//			System.out.println("grafofinal5"+grafo5[4][3]); // 36
+			//			System.out.println("grafofinal5"+grafoextra[1][0]); //90
+			//			System.out.println("grafofinal5"+grafoextra[4][3]); // 36
 			//			System.out.println("grafofinal100"+grafo100[1][0]); //12
 			//			System.out.println("grafofinal100"+grafo100[99][98]); // 81
 			//			System.out.println("grafofinal1000"+grafo1000[2][0]); // 53
@@ -62,7 +79,6 @@ public class Controller {
 		}
 
 
-		Scanner lector = new Scanner(System.in);
 		boolean fin = false;
 		int verticeInicial;
 		int Verticedestino;
