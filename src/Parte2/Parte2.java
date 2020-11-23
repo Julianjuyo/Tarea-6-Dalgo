@@ -23,6 +23,7 @@ public class Parte2 {
 			System.out.println("No se cargó la matriz correctamente");}
 	}
 
+	
 	private static int[][] cargarMatriz(Integer i) throws IOException,FileNotFoundException {
 
 
@@ -43,11 +44,10 @@ public class Parte2 {
 		return matriz;
 	}
 
-	private static ? hallarComponentesConectados(int[][] matriz) {
+	private static void hallarComponentesConectados(int[][] matrizAdyacencia) {
+		// TODO Auto-generated method stub
 		
-		
-		
-		return ?;
 	}
+
 
 }

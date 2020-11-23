@@ -222,6 +222,7 @@ public class Controller {
 
 			}
 		}
+		lector.close();
 	}
 
 
@@ -266,12 +267,12 @@ public class Controller {
 	}
 
 	public void menu() {
-		System.out.println("Que algoritmo desea Implementar (escriba el numero)"+ "\n"
-				+ "1. Dijkstra"+ "\n"
-				+ "2. Bellman Ford"+ "\n"
-				+ "3. Floyd Warschall"+ "\n"
-				+ "4. BFS"+ "\n"
-				+ "5. DFS"+ "\n");
+		System.out.println("Que algoritmo desea Utilizar (escriba el numero)"+ "\n"
+				+ "1. Hallar un camino de costo mínimo usando el algoritmo de Dijkstra"+ "\n"
+				+ "2. Hallar un camino de costo mínimo usando el algoritmo de Bellman-Ford"+ "\n"
+				+ "3. Hallar un camino de costo mínimo usando el algoritmo de Floyd-Warschall"+ "\n"
+				+ "4. Usar BFS para hallar los componentes conectados de un grafo"+ "\n"
+				+ "5. Usar DFS para hallar un órden topológico o detectar un ciclo"+ "\n");
 
 	}
 
