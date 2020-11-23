@@ -25,12 +25,14 @@ public class Controller {
 	private  Dijsktra dijkstra;
 	private BellmanFord bellmanFord;
 	private FloydWarschall floydWarschall;
+	
 
 	public Controller ()
 	{
 		dijkstra = new Dijsktra();
 		bellmanFord = new BellmanFord();
 		floydWarschall = new FloydWarschall();
+	 
 	}
 
 
@@ -42,6 +44,7 @@ public class Controller {
 		int[][] grafo100 = null;
 		int[][] grafo1000 = null;
 		int[][] grafoextra = null;
+		int numverticesgrafoextra = 0;
 		Scanner lector = new Scanner(System.in);
 
 
@@ -53,23 +56,25 @@ public class Controller {
 			grafo1000 = cargarArchivo(GRAFO_DISTANCIA_1000,1000);
 			
 			System.out.println("\n"+"Desea cargar un archivo?");
-			String respuesta = "no"; //lector.next();
+			String respuesta = lector.next();
 			
 			if(respuesta.equals("si")) {
 				System.out.println("\n"+"Indique la ruta de donde se encuentra el archivo ");
 				String ruta = lector.next();
 				System.out.println("\n"+"Indique el numero de vertices que contiene el grafo");
-				int num = lector.nextInt();
+				numverticesgrafoextra = lector.nextInt();
 
-				grafoextra = cargarArchivo(ruta,num);
+				grafoextra = cargarArchivo(ruta,numverticesgrafoextra);
 				
 			}
 			else {}
 			
 			System.out.println("\n");
 
-			//			System.out.println("grafofinal5: "+grafo5[1][4]); //90
-			//			System.out.println("grafofinal5: "+grafo5[4][3]); // 36
+						System.out.println("grafoextra: "+grafo5[0][0]); //0
+						System.out.println("grafoextra: "+grafo5[0][1]); // 90
+						System.out.println("grafoextra: "+grafo5[1][0]); //15
+						System.out.println("grafoextra: "+grafo5[4][4]); // 0
 			//			System.out.println("grafofinal100"+grafo100[1][0]); //12
 			//			System.out.println("grafofinal100"+grafo100[99][98]); // 81
 			//			System.out.println("grafofinal1000"+grafo1000[2][0]); // 53
@@ -98,32 +103,35 @@ public class Controller {
 			case 1:	
 				System.out.println("Implementando el algoritmo de Dijkstra \n");
 
-				System.out.println("Seleccione el vertice Origen");
-				verticeInicial = 0 ;//Integer.parseInt(lector.next());
-				
-
-				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3) \n 1. Grafo con 5 vertices1 \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices");
-
+				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3 o 4) \n 1. Grafo con 5 vertices \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices \n 4. Grafo con "+ numverticesgrafoextra + " vertices");
 				NoVertices = Integer.parseInt(lector.next());
-				ArrayList resp;
+				
+				System.out.println("Seleccione el vertice Origen");
+				verticeInicial = Integer.parseInt(lector.next());
 
 				TInicio = System.currentTimeMillis();
-
 				if(NoVertices==1) {
-					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafo5, verticeInicial), grafo5.length,verticeInicial); ;	
+					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafo5, verticeInicial), grafo5.length,verticeInicial); 
 				}
 				else if(NoVertices==2) {
-					dijkstra.DijkstraAlgoritmo(grafo100, verticeInicial);	
+					
+					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafo100, verticeInicial), grafo100.length,verticeInicial); 
+					
 				}
 				else if(NoVertices==3) {
-					dijkstra.DijkstraAlgoritmo(grafo1000, verticeInicial);	
+					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafo1000, verticeInicial), grafo1000.length,verticeInicial); 
+	
+				}
+				else if(NoVertices==4) {
+					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafoextra, verticeInicial), grafoextra.length,verticeInicial); 
+	
 				}
 
 				TFin = System.currentTimeMillis(); 
 				tiempo = TFin - TInicio;
 			
 				
-				System.out.println("\n"+ "El tiempo que tardo el algoritmo fue de: "+tiempo+"milisegundos");	
+				System.out.println("\n"+ "El tiempo que tardo el algoritmo fue de: "+tiempo+" milisegundos");	
 
 
 
@@ -241,7 +249,7 @@ public class Controller {
 		System.out.println(nombreArchivo);
 
 		int [][] grafo = new int [tamano][tamano];
-		int j=0;
+		int i=0;
 
 		try (FileReader reader = new FileReader(nombreArchivo);	
 				BufferedReader in = new BufferedReader(reader)) 
@@ -253,13 +261,14 @@ public class Controller {
 				//System.out.println("1."+line);			
 				String [] items = line.split("\t");
 
-				for (int i = 0; i < tamano; i++) {
-					int valor = Integer.parseInt(items[i]);
+				for (int j = 0; j < tamano; j++) {
+					int valor = Integer.parseInt(items[j]);
+
 					grafo[i][j]= valor;			
 					//System.out.println("grafo"+grafo[i][j]);
 				}
 				line = in.readLine();
-				j++;
+				i++;
 			}
 			return grafo;
 		}	
