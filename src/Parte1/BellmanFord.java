@@ -93,37 +93,49 @@ public class BellmanFord {
 	{
 		System.out.println("Entro al algoritmo" );
 
+		setGrafo(new ArrayList<Vertice>());
 		int numVertices = matrizDeAdj.length;
 
-
 		crearEInicializarGrafo(numVertices, verticeInicial);
-		int numeroEjes = numeroEdjes(matrizDeAdj);
-		System.out.println(numeroEjes);
+		
+		//System.out.println(numeroEjes);
 
 
 		for (int i = 0; i < numVertices-1; i++) {
 
-			for (int edje = 0; edje < numVertices; edje++) {
-
-				int valorEdje = matrizDeAdj[i][edje];
-
-				//System.out.println(valorEdje);
+			Vertice uVertice = grafo.get(i);
+			
+			if (uVertice.getRutaMasCorta()!=INFINITO) {
 				
-				if(valorEdje!=0 && valorEdje!=-1) {
-
-					Vertice uVertice = grafo.get(i);
-					Vertice vVertice = grafo.get(edje);
-
-					int nuevaMasCorta = valorEdje + uVertice.getRutaMasCorta();
-
-					if ( vVertice.getRutaMasCorta() > nuevaMasCorta ) {
-
-						vVertice.setRutaMasCorta(nuevaMasCorta);
-						vVertice.setVerticePredecesor(uVertice);
-					}	
+				//System.out.println("Entro a "+ uVertice.getID());
+				//System.out.println(uVertice.getRutaMasCorta());
+				
+				
+				for (int edje = 0; edje < numVertices; edje++) {
+					
+					int valorEdje = matrizDeAdj[i][edje];
+					
+					//System.out.println("VAlor del eje "+ valorEdje);
+					
+					if(valorEdje!=0 && valorEdje!=-1) {
+						
+						Vertice vVertice = grafo.get(edje);
+						
+						int nuevaMasCorta = valorEdje + uVertice.getRutaMasCorta();
+						
+						//System.out.println("RUTA actual"+ vVertice.getRutaMasCorta());
+						//System.out.println("RUTA NUEVA"+ nuevaMasCorta);
+						
+						if ( vVertice.getRutaMasCorta() > nuevaMasCorta ) {
+							
+							vVertice.setRutaMasCorta(nuevaMasCorta);
+							vVertice.setVerticePredecesor(uVertice);
+						//	System.out.println("RUTA ACTUALIZADA"+ vVertice.getRutaMasCorta());
+						//	System.out.println("PREDECESOR "+ vVertice.getVerticePredecesor().ID+"\n");
+						}	
+					}
 				}
 			}
-
 		}
 
 		
@@ -155,31 +167,6 @@ public class BellmanFord {
 		}
 		return grafo;
 	}
-
-
-
-	/**
-	 * 
-	 * @param matrizDeAdj
-	 * @return
-	 */
-	public int numeroEdjes(int[][] matrizDeAdj)
-	{
-		int resp=0;
-		for (int i = 0; i < matrizDeAdj.length; i++) {
-			for (int j = 0; j < matrizDeAdj.length; j++) {
-
-				if(matrizDeAdj[i][j]!=0 && matrizDeAdj[i][j]!=-1) {
-
-					
-					resp++;
-				}
-			}
-		}
-		return resp;
-	}
-
-
 
 
 

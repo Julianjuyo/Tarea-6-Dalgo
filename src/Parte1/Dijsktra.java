@@ -92,7 +92,8 @@ public class Dijsktra {
 	public ArrayList<Vertice>  DijkstraAlgoritmo(int[][] matrizDeAdj, int verticeInicial)
 	{
 		System.out.println("Entro al algoritmo" );
-
+		setGrafo(new ArrayList<Vertice>());
+		
 		int numVertices = matrizDeAdj.length;
 		S = new Boolean[numVertices]; 
 

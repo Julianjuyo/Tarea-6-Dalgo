@@ -101,7 +101,7 @@ public class Controller {
 			switch(option){
 
 			case 1:	
-				System.out.println("Implementando el algoritmo de bellmanFord \n");
+				System.out.println("Implementando el algoritmo de Dijkstra \n");
 
 				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3 o 4) \n 1. Grafo con 5 vertices \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices \n 4. Grafo con "+ numverticesgrafoextra + " vertices");
 				NoVertices = Integer.parseInt(lector.next());
@@ -146,7 +146,7 @@ public class Controller {
 				NoVertices = Integer.parseInt(lector.next());
 
 				System.out.println("Seleccione el vertice Origen");
-				verticeInicial = 0; //Integer.parseInt(lector.next());
+				verticeInicial = Integer.parseInt(lector.next());
 
 				TInicio = System.currentTimeMillis();
 
@@ -178,48 +178,36 @@ public class Controller {
 			case 3:
 				System.out.println("Implementando el algoritmo de Floyd Warschall");
 
-				System.out.println("Seleccione el vertice Origen");
-				verticeInicial = Integer.parseInt(lector.next());
-
-				System.out.println("Seleccione el vertice Destino");
-				Verticedestino = Integer.parseInt(lector.next());
-
-
-				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3) \n 1. Grafo con 5 vertices1 \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices");
-
+				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3 o 4) \n 1. Grafo con 5 vertices \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices \n 4. Grafo con "+ numverticesgrafoextra + " vertices");
 				NoVertices = Integer.parseInt(lector.next());
 
+				System.out.println("Seleccione el vertice Origen");
+				verticeInicial = Integer.parseInt(lector.next());
 
 				TInicio = System.currentTimeMillis();
 
 				if(NoVertices==1) {
-					floydWarschall.FloydWarschallAlgoritmo(grafo5);	
+					
+					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo5, verticeInicial), grafo5.length,verticeInicial); 
 				}
 				else if(NoVertices==2) {
-					floydWarschall.FloydWarschallAlgoritmo(grafo100);	
+					
+					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo100, verticeInicial), grafo100.length,verticeInicial); 
+					
 				}
 				else if(NoVertices==3) {
-					floydWarschall.FloydWarschallAlgoritmo(grafo1000);	
+					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo1000, verticeInicial), grafo1000.length,verticeInicial); 
+	
 				}
-
+				else if(NoVertices==4) {
+					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafoextra, verticeInicial), grafoextra.length,verticeInicial); 
+	
+				}
+				
 				TFin = System.currentTimeMillis(); 
 				tiempo = TFin - TInicio;
-				System.out.println("El tiempo que tardo el algoritmo fue de: "+tiempo+"milisegundos");	
+				System.out.println("El tiempo que tardo el algoritmo fue de: "+tiempo+" milisegundos");	
 
-
-				System.out.println("------------------------------------------------------------------------------- \n");
-				break;
-
-
-			case 4:
-				System.out.println("Implementando el algoritmo de BFS");
-
-				System.out.println("------------------------------------------------------------------------------- \n");
-				break;
-
-
-			case 5:
-				System.out.println("Implementando el algoritmo de DFS");
 
 				System.out.println("------------------------------------------------------------------------------- \n");
 				break;
@@ -278,9 +266,7 @@ public class Controller {
 		System.out.println("Que algoritmo desea Implementar (escriba el numero)"+ "\n"
 				+ "1. Dijkstra"+ "\n"
 				+ "2. Bellman Ford"+ "\n"
-				+ "3. Floyd Warschall"+ "\n"
-				+ "4. BFS"+ "\n"
-				+ "5. DFS"+ "\n");
+				+ "3. Floyd Warschall"+ "\n");
 
 	}
 
