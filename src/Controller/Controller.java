@@ -181,26 +181,24 @@ public class Controller {
 				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3 o 4) \n 1. Grafo con 5 vertices \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices \n 4. Grafo con "+ numverticesgrafoextra + " vertices");
 				NoVertices = Integer.parseInt(lector.next());
 
-				System.out.println("Seleccione el vertice Origen");
-				verticeInicial = Integer.parseInt(lector.next());
 
 				TInicio = System.currentTimeMillis();
 
 				if(NoVertices==1) {
 					
-					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo5, verticeInicial), grafo5.length,verticeInicial); 
+					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo5 ), grafo5.length); 
 				}
 				else if(NoVertices==2) {
 					
-					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo100, verticeInicial), grafo100.length,verticeInicial); 
+					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo100), grafo100.length); 
 					
 				}
 				else if(NoVertices==3) {
-					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo1000, verticeInicial), grafo1000.length,verticeInicial); 
+					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo1000 ), grafo1000.length); 
 	
 				}
 				else if(NoVertices==4) {
-					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafoextra, verticeInicial), grafoextra.length,verticeInicial); 
+					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafoextra), grafoextra.length); 
 	
 				}
 				

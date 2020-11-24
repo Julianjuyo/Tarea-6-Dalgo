@@ -1,224 +1,147 @@
 package Parte1;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-
-import Parte1.BellmanFord.Vertice;
 
 public class FloydWarschall {
 
+
 	//-----------------------------
-		//	METODO AUXILIAR
-		//-----------------------------
-		/**
-		 * METODO que hace referencia a un vertice del grafo
-		 * @author julianoliveros
-		 *
-		 */
-		class Vertice implements Comparator<Vertice> {
+	//	ATRIBUTOS
+	//-----------------------------
 
-			private int ID;
-			private Integer rutaMasCorta;
-			private Vertice verticePredecesor;
+	public static final int INFINITO = Integer.MAX_VALUE;
 
-			public  Vertice() {
-				this.setID(0);
-				this.rutaMasCorta = 0;
-				this.verticePredecesor = null;
+	//-----------------------------
+	//	METODOS
+	//-----------------------------
+
+	/**
+	 * Metodo que Inicializa el grafo 
+	 */
+	public FloydWarschall() {
+
+	}
+
+
+	/**
+	 * MEtodo que encuentra los caminos de costo minimo utilizando el algoritmo de Bellman Ford
+	 * @param matrizDeAdj matriz que tiene los ejes
+	 * @param verticeInicial El vertice desde el cual se quiere hallar los costos minimos
+	 * @return grafo con los vertices
+	 */
+	public int[][] FloydWarschallAlgoritmo(int[][] matrizDeAdj)
+	{
+		System.out.println("Entro al algoritmo" );
+
+		int numVertices = matrizDeAdj.length;
+
+		int[][] m = new int[numVertices][numVertices]; //inicializar(matrizDeAdj, numVertices);
+
+		int i=0;
+		int j=0;
+		int k=0;
+
+		//		for (int i = 0; i < numVertices; i++) {
+		//
+		//			for (int j = 0; j < numVertices; j++) {
+
+		while (k<numVertices) {
+
+			System.out.println("ITERACIOOOOOOON K ES Y ESTA EN "+k);
+			if(k==0) {
+
+				if (matrizDeAdj[i][j] == -1) {
+					m[i][j] = 0;
+				}
+				else {
+
+					m[i][j] = matrizDeAdj[i][j];
+				}
+				System.out.println("1: "+m[i][j] );
 
 			}
+			else if(k>0 && i!=k && j!=k){
+				m[i][j]= Math.min(Math.min(m[i][j], m[i][k]) , m[k][j]);
 
-			public int getRutaMasCorta() {
-				return rutaMasCorta;
+				System.out.println("2: "+m[i][j] );
 			}
-			public void setRutaMasCorta(int rutaMasCorta) {
-				this.rutaMasCorta = rutaMasCorta;
-			}
-
-			public Vertice getVerticePredecesor() {
-				return verticePredecesor;
-			}
-			public void setVerticePredecesor(Vertice verticePredecesor) {
-				this.verticePredecesor = verticePredecesor;
-			}
-			private int getID() {
-				return ID;
-			}
-
-			private void setID(int iD) {
-				ID = iD;
-			}
-			@Override
-			public int compare(Vertice node1, Vertice node2) 
-			{ 
-				if (node1.rutaMasCorta < node2.rutaMasCorta) 
-					return -1; 
-				if (node1.rutaMasCorta > node2.rutaMasCorta) 
-					return 1; 
-				return 0; 
-			}
-		}
-
-
-		//-----------------------------
-		//	ATRIBUTOS
-		//-----------------------------
-
-		public static final int INFINITO = Integer.MAX_VALUE;
-
-		private ArrayList<Vertice> grafo ; // grafo que contiene los vertices
-
-
-
-		//-----------------------------
-		//	METODOS
-		//-----------------------------
-
-		/**
-		 * Metodo que Inicializa el grafo 
-		 */
-		public FloydWarschall() {
-			setGrafo(new ArrayList<Vertice>());
-
-		}
-
-
-		/**
-		 * MEtodo que encuentra los caminos de costo minimo utilizando el algoritmo de Bellman Ford
-		 * @param matrizDeAdj matriz que tiene los ejes
-		 * @param verticeInicial El vertice desde el cual se quiere hallar los costos minimos
-		 * @return grafo con los vertices
-		 */
-		public ArrayList<Vertice>  FloydWarschallAlgoritmo(int[][] matrizDeAdj, int verticeInicial)
-		{
-			System.out.println("Entro al algoritmo" );
-
-			setGrafo(new ArrayList<Vertice>());
-			int numVertices = matrizDeAdj.length;
-
-			crearEInicializarGrafo(numVertices, verticeInicial);
-			
-			//System.out.println(numeroEjes);
-
-
-			for (int i = 0; i < numVertices-1; i++) {
-
-				Vertice uVertice = grafo.get(i);
+			else if(k>0 && (i==k ||j==k)) {
 				
-				if (uVertice.getRutaMasCorta()!=INFINITO) {
-					
-					//System.out.println("Entro a "+ uVertice.getID());
-					//System.out.println(uVertice.getRutaMasCorta());
-					
-					
-					for (int edje = 0; edje < numVertices; edje++) {
-						
-						int valorEdje = matrizDeAdj[i][edje];
-						
-						//System.out.println("VAlor del eje "+ valorEdje);
-						
-						if(valorEdje!=0 && valorEdje!=-1) {
-							
-							Vertice vVertice = grafo.get(edje);
-							
-							int nuevaMasCorta = valorEdje + uVertice.getRutaMasCorta();
-							
-							//System.out.println("RUTA actual"+ vVertice.getRutaMasCorta());
-							//System.out.println("RUTA NUEVA"+ nuevaMasCorta);
-							
-							if ( vVertice.getRutaMasCorta() > nuevaMasCorta ) {
-								
-								vVertice.setRutaMasCorta(nuevaMasCorta);
-								vVertice.setVerticePredecesor(uVertice);
-							//	System.out.println("RUTA ACTUALIZADA"+ vVertice.getRutaMasCorta());
-							//	System.out.println("PREDECESOR "+ vVertice.getVerticePredecesor().ID+"\n");
-							}	
-						}
-					}
+				System.out.println("ENTRO AQUI: "+ +m[i][j] );
+			}
+
+
+
+			if(j<numVertices-1 ) {
+				j++;
+
+			}
+			else if(j== numVertices-1 && i< numVertices-1) {
+				i++;
+				j=0;
+			}
+			else if(j== numVertices-1 && i==numVertices-1) {
+				i=0;
+				j=0;
+				k++;
+			}
+			System.out.println("i: "+i );
+			System.out.println("j: "+j );
+			System.out.println("k: "+k );
+
+			System.out.println("\n" );
+
+
+		}	
+		//			}
+		//		}
+
+		return m;
+	}
+
+
+
+
+	/**
+	 * Metodo que imprime las distancias mas cortas desde un vertice origen hasta todos los vertices.
+	 * @param g grafo 
+	 * @param num_Vertices numero de vertices del grafo
+	 * @param ini Indice del grafo origen
+	 */
+	public void Imprimir(int[][]  m , int V)   { 
+
+		for (int i = 0; i < V; i++) {
+			for (int j = 0; j < V; j++) {
+
+				System.out.println("La Distancia desde: ("+i+") Hasta: ("+ j + ") es de: " + m[i][j]); 
+			}
+		}
+
+
+
+	}
+
+
+
+	public int[][] inicializar(int[][] matrizDeAdj, int V){
+
+		int[][] m = new int[V][V];
+
+
+		for (int i = 0; i < V; i++) {
+			for (int j = 0; j < V; j++) {
+
+				if (matrizDeAdj[i][j] == -1) {
+					m[i][j] = INFINITO;
+				}
+				else {
+
+					m[i][j] = matrizDeAdj[i][j];
 				}
 			}
-
-			
-			for (int i = 0; i < matrizDeAdj.length; i++) {
-
-				for (int j = 0; j < matrizDeAdj.length; j++) {
-
-					int valorEdje = matrizDeAdj[i][j];
-
-					if(valorEdje!=0 && valorEdje!=-1) {
-
-
-						Vertice uVertice = grafo.get(i);
-						Vertice vVertice = grafo.get(j);
-						
-						
-						int nuevaMasCorta = valorEdje + uVertice.getRutaMasCorta();
-
-						if ( vVertice.getRutaMasCorta() > nuevaMasCorta && vVertice.getVerticePredecesor()==uVertice ) {
-
-							System.out.println(valorEdje);
-							System.out.println(uVertice.ID);
-							System.out.println(vVertice.ID);
-							System.out.println("ERROR HAY CLICO");
-						}
-					}
-
-				}
-			}
-			return grafo;
 		}
+		return m;
+	}
 
 
-
-		/**
-		 * Metodo que imprime las distancias mas cortas desde un vertice origen hasta todos los vertices.
-		 * @param g grafo 
-		 * @param num_Vertices numero de vertices del grafo
-		 * @param ini Indice del grafo origen
-		 */
-		public void Imprimir(ArrayList<Vertice> g,int num_Vertices , int ini)   { 
-			for (int i = 0; i < num_Vertices; i++) 
-				System.out.println("La Distancia desde: ("+ini+") Hasta: ("+ i + ") es de: " + g.get(i).getRutaMasCorta()); 
-		}
-
-
-
-		/**
-		 * Metodo en el cual se crean los vertices del grafo, ademas se inicializan sus valores para poder implementar Dijsktra
-		 * Le asigna al vertice inicial una distancia de 0
-		 * 
-		 * @param numeroVertices
-		 * @param verticeInicial
-		 */
-		public void crearEInicializarGrafo(int numeroVertices, int verticeInicial) {
-
-			for (int i = 0; i < numeroVertices; i++) {
-
-				Vertice actual = new Vertice();
-				actual.setID(i);
-				actual.setRutaMasCorta(INFINITO);
-				actual.setVerticePredecesor(null);
-				getGrafo().add(actual);
-			}
-			getGrafo().get(verticeInicial).setRutaMasCorta(0);
-
-		}
-
-
-		/**
-		 * Metodo que retorna el grafo
-		 * @return retorna el grafo
-		 */
-		public ArrayList<Vertice> getGrafo() {
-			return grafo;
-		}
-
-		/**
-		 * Metodo que asigna un grafo
-		 * @param grafo
-		 */
-		public void setGrafo(ArrayList<Vertice> grafo) {
-			this.grafo = grafo;
-		}
 
 }
