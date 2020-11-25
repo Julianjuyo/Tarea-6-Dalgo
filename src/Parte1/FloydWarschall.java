@@ -8,7 +8,7 @@ public class FloydWarschall {
 	//	ATRIBUTOS
 	//-----------------------------
 
-	public static final int INFINITO = Integer.MAX_VALUE;
+	public static final int INFINITO = 999999999;
 
 	//-----------------------------
 	//	METODOS
@@ -18,87 +18,55 @@ public class FloydWarschall {
 	 * Metodo que Inicializa el grafo 
 	 */
 	public FloydWarschall() {
-
 	}
-
 
 	/**
 	 * MEtodo que encuentra los caminos de costo minimo utilizando el algoritmo de Bellman Ford
 	 * @param matrizDeAdj matriz que tiene los ejes
-	 * @param verticeInicial El vertice desde el cual se quiere hallar los costos minimos
-	 * @return grafo con los vertices
+	 * @param numV numero de vertices
 	 */
-	public int[][] FloydWarschallAlgoritmo(int[][] matrizDeAdj)
-	{
-		System.out.println("Entro al algoritmo" );
+	public void FloydWarschallAlgoritmo(int matrizDeAdj[][], int numV) {
 
-		int numVertices = matrizDeAdj.length;
+		int matrix[][] = inicializar(matrizDeAdj, numV);
+		int i, j, k;
 
-		int[][] m = new int[numVertices][numVertices]; //inicializar(matrizDeAdj, numVertices);
 
-		int i=0;
-		int j=0;
-		int k=0;
+		for (k = 0; k < numV; k++) {
+			for (i = 0; i < numV; i++) {
+				for (j = 0; j < numV; j++) {
 
-		//		for (int i = 0; i < numVertices; i++) {
-		//
-		//			for (int j = 0; j < numVertices; j++) {
-
-		while (k<numVertices) {
-
-			System.out.println("ITERACIOOOOOOON K ES Y ESTA EN "+k);
-			if(k==0) {
-
-				if (matrizDeAdj[i][j] == -1) {
-					m[i][j] = 0;
+					if (matrix[i][k] + matrix[k][j] < matrix[i][j]) {
+						matrix[i][j] = matrix[i][k] + matrix[k][j];	
+					}
 				}
-				else {
-
-					m[i][j] = matrizDeAdj[i][j];
-				}
-				System.out.println("1: "+m[i][j] );
-
 			}
-			else if(k>0 && i!=k && j!=k){
-				m[i][j]= Math.min(Math.min(m[i][j], m[i][k]) , m[k][j]);
-
-				System.out.println("2: "+m[i][j] );
-			}
-			else if(k>0 && (i==k ||j==k)) {
-				
-				System.out.println("ENTRO AQUI: "+ +m[i][j] );
-			}
-
-
-
-			if(j<numVertices-1 ) {
-				j++;
-
-			}
-			else if(j== numVertices-1 && i< numVertices-1) {
-				i++;
-				j=0;
-			}
-			else if(j== numVertices-1 && i==numVertices-1) {
-				i=0;
-				j=0;
-				k++;
-			}
-			System.out.println("i: "+i );
-			System.out.println("j: "+j );
-			System.out.println("k: "+k );
-
-			System.out.println("\n" );
-
-
-		}	
-		//			}
-		//		}
-
-		return m;
+		}
+		Imprimir(matrix, numV);
 	}
 
+	/**
+	 * Metodo que inicializa la matriz 
+	 * @param matrizDeAdj
+	 * @param V
+	 * @return
+	 */
+	public int[][] inicializar(int[][] matrizDeAdj, int V){
 
+		int[][] m = new int[V][V];
+
+		for (int i = 0; i < V; i++) {
+			for (int j = 0; j < V; j++) {
+
+				if(matrizDeAdj[i][j]==-1) {
+					m[i][j] = INFINITO;
+				}
+				else {
+					m[i][j] = matrizDeAdj[i][j];
+				}
+			}
+		}
+		return m;
+	}
 
 
 	/**
@@ -107,41 +75,22 @@ public class FloydWarschall {
 	 * @param num_Vertices numero de vertices del grafo
 	 * @param ini Indice del grafo origen
 	 */
-	public void Imprimir(int[][]  m , int V)   { 
+	public void Imprimir(int matrix[][], int V) {
 
-		for (int i = 0; i < V; i++) {
-			for (int j = 0; j < V; j++) {
+		for (int i = 0; i < V; ++i) {
+			for (int j = 0; j < V; ++j) {
 
-				System.out.println("La Distancia desde: ("+i+") Hasta: ("+ j + ") es de: " + m[i][j]); 
-			}
-		}
-
-
-
-	}
-
-
-
-	public int[][] inicializar(int[][] matrizDeAdj, int V){
-
-		int[][] m = new int[V][V];
-
-
-		for (int i = 0; i < V; i++) {
-			for (int j = 0; j < V; j++) {
-
-				if (matrizDeAdj[i][j] == -1) {
-					m[i][j] = INFINITO;
-				}
+				if (matrix[i][j] == INFINITO)
+					System.out.print("ERROR");
 				else {
-
-					m[i][j] = matrizDeAdj[i][j];
+					System.out.print(matrix[i][j] + "  ");
+					//System.out.println("La Distancia desde: ("+i+") Hasta: ("+ j + ") es de: " + matrix[i][j]); 
 				}
 			}
+			System.out.println();
 		}
-		return m;
 	}
-
-
-
+	
+	
 }
+

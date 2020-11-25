@@ -56,14 +56,15 @@ public class Controller {
 			grafo1000 = cargarArchivo(GRAFO_DISTANCIA_1000,1000);
 			
 			System.out.println("\n"+"Desea cargar un archivo?");
-			String respuesta ="no";// lector.next();
+			String respuesta ="si";// lector.next();
 			
 			if(respuesta.equals("si")) {
 				System.out.println("\n"+"Indique la ruta de donde se encuentra el archivo ");
-				String ruta = lector.next();
+				String ruta = "/Users/julianoliveros/Desktop/Copiadedistances5.txt"; //lector.next();
 				System.out.println("\n"+"Indique el numero de vertices que contiene el grafo");
-				numverticesgrafoextra = lector.nextInt();
+				numverticesgrafoextra = 4 ;//lector.nextInt();
 
+				
 				grafoextra = cargarArchivo(ruta,numverticesgrafoextra);
 				
 			}
@@ -123,6 +124,8 @@ public class Controller {
 	
 				}
 				else if(NoVertices==4) {
+		
+					
 					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafoextra, verticeInicial), grafoextra.length,verticeInicial); 
 	
 				}
@@ -185,20 +188,19 @@ public class Controller {
 				TInicio = System.currentTimeMillis();
 
 				if(NoVertices==1) {
-					
-					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo5 ), grafo5.length); 
+					floydWarschall.FloydWarschallAlgoritmo(grafo5, grafo5.length);
+
 				}
 				else if(NoVertices==2) {
-					
-					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo100), grafo100.length); 
+					floydWarschall.FloydWarschallAlgoritmo(grafo100, grafo100.length);
 					
 				}
 				else if(NoVertices==3) {
-					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafo1000 ), grafo1000.length); 
-	
+					floydWarschall.FloydWarschallAlgoritmo(grafo1000, grafo1000.length);
+					
 				}
 				else if(NoVertices==4) {
-					floydWarschall.Imprimir(floydWarschall.FloydWarschallAlgoritmo(grafoextra), grafoextra.length); 
+					floydWarschall.FloydWarschallAlgoritmo(grafoextra, grafoextra.length);
 	
 				}
 				
