@@ -83,17 +83,17 @@ public class FloydWarschall {
 				if (matrix[i][j] == INFINITO)
 					System.out.print("ERROR ");
 				else {
-					//System.out.print(matrix[i][j] + "  ");
-					if(i==94) {
-						System.out.println("La Distancia desde: ("+i+") Hasta: ("+ j + ") es de: " + matrix[i][j]); 
-						
-					}
+					System.out.print(matrix[i][j] + "  ");
+					//if(i==94) {
+					//System.out.println("La Distancia desde: ("+i+") Hasta: ("+ j + ") es de: " + matrix[i][j]); 
+
+					//}
 				}
 			}
 			System.out.println();
 		}
 	}
-	
-	
+
+
 }
 

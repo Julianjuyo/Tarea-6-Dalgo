@@ -15,7 +15,7 @@ import main.MVC;
 
 public class Controller {
 
-	
+
 	public final static String GRAFO_DISTANCIA_5 = "./data/distances5.txt";
 	public final static String GRAFO_DISTANCIA_100 = "./data/distances100.txt";
 	public final static String GRAFO_DISTANCIA_1000 = "./data/distances1000.txt";
@@ -54,29 +54,40 @@ public class Controller {
 			grafo1000 = cargarArchivo(GRAFO_DISTANCIA_1000,1000);
 
 			System.out.println("\n"+"Desea cargar un archivo?");
-			String respuesta ="si";// lector.next();
+			String respuesta =lector.next();// "si";// 
 
 			if(respuesta.equals("si")) {
 				System.out.println("\n"+"Indique la ruta de donde se encuentra el archivo ");
-				String ruta = "/Users/julianoliveros/Desktop/Datos/V.txt"; //lector.next();
+				String ruta = lector.next(); //"/Users/julianoliveros/Desktop/Datos/V.txt"; //
 
 				numverticesgrafoextra= NumeroDeVertices(ruta);
-				
+
 				grafoextra = cargarArchivo(ruta,numverticesgrafoextra);
 
+				System.out.println("aaa"+numverticesgrafoextra);
+
+//				int i = 0;
+//				int j = 0;
+//				for ( i = 0; i < 50; ++i) {
+//					for (j = 0; j < 50; ++j) {
+//
+//						if(j==49)
+//							System.out.print(grafo100[i][j]);
+//						
+//						else
+//							System.out.print(grafo100[i][j] + "  ");
+//
+//					}
+//					System.out.println();
+//				}
+//				
+//				System.out.println(i+"+"+j);
+			
 			}
-			else {}
+
 
 			System.out.println("\n");
 
-			//						System.out.println("grafoextra: "+grafo5[0][0]); //0
-			//						System.out.println("grafoextra: "+grafo5[0][1]); // 90
-			//						System.out.println("grafoextra: "+grafo5[1][0]); //15
-			//						System.out.println("grafoextra: "+grafo5[4][4]); // 0
-			//			System.out.println("grafofinal100"+grafo100[1][0]); //12
-			//			System.out.println("grafofinal100"+grafo100[99][98]); // 81
-			//			System.out.println("grafofinal1000"+grafo1000[2][0]); // 53
-			//			System.out.println("grafofinal1000"+grafo1000[999][998]); //99
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -179,7 +190,7 @@ public class Controller {
 				System.out.println("Implementando el algoritmo de Floyd Warschall");
 
 				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3 o 4) \n 1. Grafo con 5 vertices \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices \n 4. Grafo con "+ numverticesgrafoextra + " vertices");
-      			NoVertices = Integer.parseInt(lector.next());
+				NoVertices = Integer.parseInt(lector.next());
 
 
 				TInicio = System.currentTimeMillis();
