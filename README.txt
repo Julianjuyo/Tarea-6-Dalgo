@@ -35,6 +35,29 @@ PARA FLOYD WARSCHALL
 2. Indicar con el número que grafo desea cargar (En caso de querer ejecutar el grafo que cargo elija la opción 4).
 3. Se muestran las caminos de costos mínimos junto con el tiempo que tardo el algoritmo y se devuelve a el menú principal.
 
+Resultados de la ejecución:
+
+Para el archivo distances5.txt los algoritmos tardaron:
+
+Dijkstra: 3 milisegundos
+Bellman Ford: 1036 milisegundos
+Floyd Warschall: 1 milisegundos
+
+Para el archivo distances100.txt los algoritmos tardaron:
+
+Dijkstra: 8 milisegundos
+Bellman Ford: 1500 milisegundos
+Floyd Warschall: 58 milisegundos 
+
+Para el archivo distances1000.txt los algoritmos tardaron:
+
+Dijkstra: 53 milisegundos
+Bellman Ford: 1420 milisegundos
+Floyd Warschall: 3975 milisegundos
+
+Se puede concluir que Dijkstra es el algoritmo mas eficiente depures vendría Bellman Ford y por ultimo Floyd Warschall, sin embargo con un numero menor a 1000 vértices (estimado) el algoritmo de Floyd Warschall es mas eficiente el algoritmo de Bellman Ford.
+
+
 Parte 2
 
 1.  La ruta del archivo que contiene la matriz se ingresa como argumento del programa, esto funciona por ejemplo ingresando "data/distances100.txt" 
@@ -75,6 +98,9 @@ Caso 1: Hay un ciclo en el grafo
 Caso 2: No hay ciclos en el grafo
 
     El programa mostrará en consola el texto "El orden topológico es: " seguido de el orden topológico del grafo de izquierda a derecha.
+
+
+
 
 
 
