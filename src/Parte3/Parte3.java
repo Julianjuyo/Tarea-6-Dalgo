@@ -23,7 +23,7 @@ public class Parte3 {
 
 			for(Integer i :ordenTopologico(matrizAdyacencia))
 			{
-				System.out.println(i+1); // imprime el orden topológico del grafo, si imprime un repetido es un ciclo.
+				System.out.println(i); // imprime el orden topológico del grafo, si imprime un repetido es un ciclo.
 			}
 		}
 		else {
