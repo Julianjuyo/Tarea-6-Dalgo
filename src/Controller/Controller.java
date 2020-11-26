@@ -17,7 +17,6 @@ public class Controller {
 
 	private  Dijsktra dijkstra;
 	private BellmanFord bellmanFord;
-	private BellmanFord2 bellmanFord2;
 	private FloydWarschall floydWarschall;
 	
 
@@ -27,7 +26,6 @@ public class Controller {
 		dijkstra = new Dijsktra();
 		bellmanFord = new BellmanFord();
 		floydWarschall = new FloydWarschall();
-		bellmanFord2 = new BellmanFord2();
 
 	}
 
@@ -52,17 +50,16 @@ public class Controller {
 			grafo1000 = cargarArchivo(GRAFO_DISTANCIA_1000,1000);
 
 			System.out.println("\n"+"Desea cargar un archivo?");
-			String respuesta = "si";// lector.next();//
+			String respuesta = lector.next();//
 
 			if(respuesta.equals("si")) {
 				System.out.println("\n"+"Indique la ruta de donde se encuentra el archivo ");
-				String ruta = "/Users/julianoliveros/Desktop/Datos/8V-1.txt"; //lector.next(); //
+				String ruta =  lector.next(); //"/Users/julianoliveros/Desktop/Datos/8V-1.txt";
 
 				numverticesgrafoextra= NumeroDeVertices(ruta);
 
 				grafoextra = cargarArchivo(ruta,numverticesgrafoextra);
-
-				System.out.println("aaa"+numverticesgrafoextra);
+				System.out.println("# de Vertices: "+numverticesgrafoextra);
 
 //				int i = 0;
 //				int j = 0;
@@ -154,28 +151,26 @@ public class Controller {
 				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3 o 4) \n 1. Grafo con 5 vertices \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices \n 4. Grafo con "+ numverticesgrafoextra + " vertices");
 				NoVertices = Integer.parseInt(lector.next());
 
-				System.out.println("Seleccione el vertice Origen");
-				verticeInicial = Integer.parseInt(lector.next());
-
 				TInicio = System.currentTimeMillis();
 
+				System.out.println("Seleccione el vertice Origen");
+				verticeInicial = Integer.parseInt(lector.next());
+				
 				if(NoVertices==1) {
 					bellmanFord.Imprimir(bellmanFord.BellmanFordAlgoritmo(grafo5, verticeInicial), grafo5.length,verticeInicial); 
-					
-					//bellmanFord2.comienzo(grafo5, grafo5.length);
+					//bellmanFord.BellmanFordAlgoritmo(grafo5);
 				}
 				else if(NoVertices==2) {
-
 					bellmanFord.Imprimir(bellmanFord.BellmanFordAlgoritmo(grafo100, verticeInicial), grafo100.length,verticeInicial); 
-					//bellmanFord2.comienzo(grafo100, grafo100.length);
+					//bellmanFord.BellmanFordAlgoritmo(grafo100);
 				}
 				else if(NoVertices==3) {
 					bellmanFord.Imprimir(bellmanFord.BellmanFordAlgoritmo(grafo1000, verticeInicial), grafo1000.length,verticeInicial); 
-
+					//bellmanFord.BellmanFordAlgoritmo(grafo1000);
 				}
 				else if(NoVertices==4) {
 					bellmanFord.Imprimir(bellmanFord.BellmanFordAlgoritmo(grafoextra, verticeInicial), grafoextra.length,verticeInicial); 
-					//bellmanFord2.comienzo(grafoextra, grafoextra.length);
+					//bellmanFord.BellmanFordAlgoritmo(grafoextra);
 				}
 
 				TFin = System.currentTimeMillis(); 
