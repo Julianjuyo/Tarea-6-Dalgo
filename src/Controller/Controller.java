@@ -2,16 +2,11 @@ package Controller;
 
 import Parte1.*;
 import Parte1.Dijsktra;
-import Parte2.*;
-import Parte3.*;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
-import main.MVC;
 
 public class Controller {
 
@@ -226,6 +221,7 @@ public class Controller {
 
 			}
 		}
+		lector.close();
 	}
 
 	/**

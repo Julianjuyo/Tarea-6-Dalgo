@@ -5,9 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Stack;
-
+ 
 public class Parte3 {
-
+	 /**
+	  * @author Camilo Rozo
+	  */
 	public static void main(String[] args) {
 		String  path = args[0]; // ruta al archivo ingresa por argumentos del programa.
 		int[][] matrizAdyacencia = null;
@@ -20,10 +22,11 @@ public class Parte3 {
 			e.printStackTrace();
 		}
 		if(matrizAdyacencia!=null) {
-
-			for(Integer i :ordenTopologico(matrizAdyacencia))
+			Stack<Integer> orden = ordenTopologico(matrizAdyacencia);
+			while(!orden.isEmpty())
 			{
-				System.out.println(i); // imprime el orden topológico del grafo, si imprime un repetido es un ciclo.
+				int i =orden.pop();
+				System.out.append(i+","); // imprime el orden topológico del grafo, si imprime un repetido es un ciclo.
 			}
 		}
 		else {
@@ -74,7 +77,7 @@ public class Parte3 {
 				}
 			}
 		}
-		ejecucion[i]=false;//termine DFS
+		ejecucion[i]=false;//termine DFS para este vértice
 		ordenTopologico.push(i);
 	}
 

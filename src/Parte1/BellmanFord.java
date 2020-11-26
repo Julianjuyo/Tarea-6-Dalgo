@@ -3,8 +3,6 @@ package Parte1;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import Parte1.Dijsktra.Vertice;
-
 public class BellmanFord {
 
 	//-----------------------------
