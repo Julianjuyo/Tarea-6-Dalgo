@@ -3,6 +3,8 @@ package Parte1;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+
+
 public class BellmanFord {
 
 	//-----------------------------
@@ -91,6 +93,7 @@ public class BellmanFord {
 	{
 		System.out.println("Entro al algoritmo" );
 
+		
 		setGrafo(new ArrayList<Vertice>());
 		int numVertices = matrizDeAdj.length;
 
@@ -105,34 +108,34 @@ public class BellmanFord {
 			
 			if (i==0) {
 				uVertice = grafo.get(verticeInicial);				
-				System.out.println("1 "+ i);
-				System.out.println("1 "+ uVertice.rutaMasCorta);
+//				System.out.println("1 "+ i);
+//				System.out.println("1 "+ uVertice.rutaMasCorta);
 			}
 			else if (verticeInicial==i){
 				uVertice = grafo.get(0);
-				System.out.println("2 "+ i);
-				System.out.println("2 "+ uVertice.rutaMasCorta);
+//				System.out.println("2 "+ i);
+//				System.out.println("2 "+ uVertice.rutaMasCorta);
 			}
 			else {
 				uVertice = grafo.get(i);
-				System.out.println("3 "+ i);
-				System.out.println("3 "+ uVertice.rutaMasCorta);
+//				System.out.println("3 "+ i);
+//				System.out.println("3 "+ uVertice.rutaMasCorta);
 			}
 			
 			
 			if (uVertice.getRutaMasCorta()!=INFINITO) {
 				
-				System.out.println("Entro a "+ uVertice.getID());
-				System.out.println(uVertice.getRutaMasCorta());
+//				System.out.println("Entro a "+ uVertice.getID());
+//				System.out.println(uVertice.getRutaMasCorta());
 				
 				
 				for (int edje = 0; edje < numVertices; edje++) {
 					
 					int valorEdje = matrizDeAdj[uVertice.getID()][edje];
 					
-					System.out.println("\n"+ "POSICION i "+ uVertice.getID());
-					System.out.println("POSICION edje "+ edje);
-					System.out.println("VAlor del eje "+ valorEdje);
+//					System.out.println("\n"+ "POSICION i "+ uVertice.getID());
+//					System.out.println("POSICION edje "+ edje);
+//					System.out.println("VAlor del eje "+ valorEdje);
 					
 					if(valorEdje!=0 && valorEdje!=-1) {
 						
@@ -140,15 +143,15 @@ public class BellmanFord {
 						
 						int nuevaMasCorta = valorEdje + uVertice.getRutaMasCorta();
 						
-						System.out.println("RUTA actual"+ vVertice.getRutaMasCorta());
-						System.out.println("RUTA NUEVA"+ nuevaMasCorta);
+//						System.out.println("RUTA actual"+ vVertice.getRutaMasCorta());
+//						System.out.println("RUTA NUEVA"+ nuevaMasCorta);
 						
 						if ( vVertice.getRutaMasCorta() > nuevaMasCorta ) {
 							
 							vVertice.setRutaMasCorta(nuevaMasCorta);
 							vVertice.setVerticePredecesor(uVertice);
-							System.out.println("RUTA ACTUALIZADA"+ vVertice.getRutaMasCorta());
-							System.out.println("PREDECESOR "+ vVertice.getVerticePredecesor().ID+"\n");
+//							System.out.println("RUTA ACTUALIZADA"+ vVertice.getRutaMasCorta());
+//							System.out.println("PREDECESOR "+ vVertice.getVerticePredecesor().ID+"\n");
 						}	
 					}
 				}
@@ -174,10 +177,10 @@ public class BellmanFord {
 
 					if ( vVertice.getRutaMasCorta() > nuevaMasCorta && vVertice.getVerticePredecesor()==uVertice ) {
 
-						System.out.println(valorEdje);
-						System.out.println(uVertice.ID);
-						System.out.println(vVertice.ID);
-						System.out.println("ERROR HAY CLICO");
+//						System.out.println(valorEdje);
+//						System.out.println(uVertice.ID);
+//						System.out.println(vVertice.ID);
+//						System.out.println("ERROR HAY CLICO");
 					}
 				}
 
