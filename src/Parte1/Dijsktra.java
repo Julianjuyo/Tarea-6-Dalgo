@@ -166,7 +166,15 @@ public class Dijsktra {
 	 */
 	public void Imprimir(ArrayList<Vertice> g,int num_Vertices , int ini)   { 
 		for (int i = 0; i < num_Vertices; i++) 
-			System.out.println("La Distancia desde: ("+ini+") Hasta: ("+ i + ") es de: " + g.get(i).getRutaMasCorta()); 
+			
+			if(g.get(i).getRutaMasCorta()==INFINITO) {
+				System.out.println("\n"+"!!!!!!!!!!");
+				System.out.println("ERROR NO SE PUEDE LLEGAR A EL VERTICE ("+ i + ") DESDE EL VERTICE 0 ("+ini+")"); 
+				System.out.println("!!!!!!!!!!");
+			}
+			else {
+				System.out.println("La Distancia desde: ("+ini+") Hasta: ("+ i + ") es de: " + g.get(i).getRutaMasCorta()); 	
+			}
 	}
 
 

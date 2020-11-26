@@ -25,14 +25,14 @@ public class Controller {
 	private  Dijsktra dijkstra;
 	private BellmanFord bellmanFord;
 	private FloydWarschall floydWarschall;
-	
+
 
 	public Controller ()
 	{
 		dijkstra = new Dijsktra();
 		bellmanFord = new BellmanFord();
 		floydWarschall = new FloydWarschall();
-	 
+
 	}
 
 
@@ -54,28 +54,27 @@ public class Controller {
 			grafo5 = cargarArchivo(GRAFO_DISTANCIA_5,5);
 			grafo100 = cargarArchivo(GRAFO_DISTANCIA_100,100);
 			grafo1000 = cargarArchivo(GRAFO_DISTANCIA_1000,1000);
-			
+
 			System.out.println("\n"+"Desea cargar un archivo?");
 			String respuesta ="si";// lector.next();
-			
+
 			if(respuesta.equals("si")) {
 				System.out.println("\n"+"Indique la ruta de donde se encuentra el archivo ");
-				String ruta = "/Users/julianoliveros/Desktop/Copiadedistances5.txt"; //lector.next();
-				System.out.println("\n"+"Indique el numero de vertices que contiene el grafo");
-				numverticesgrafoextra = 4 ;//lector.nextInt();
+				String ruta = "/Users/julianoliveros/Desktop/Datos/V.txt"; //lector.next();
 
+				numverticesgrafoextra= NumeroDeVertices(ruta);
 				
 				grafoextra = cargarArchivo(ruta,numverticesgrafoextra);
-				
+
 			}
 			else {}
-			
+
 			System.out.println("\n");
 
-//						System.out.println("grafoextra: "+grafo5[0][0]); //0
-//						System.out.println("grafoextra: "+grafo5[0][1]); // 90
-//						System.out.println("grafoextra: "+grafo5[1][0]); //15
-//						System.out.println("grafoextra: "+grafo5[4][4]); // 0
+			//						System.out.println("grafoextra: "+grafo5[0][0]); //0
+			//						System.out.println("grafoextra: "+grafo5[0][1]); // 90
+			//						System.out.println("grafoextra: "+grafo5[1][0]); //15
+			//						System.out.println("grafoextra: "+grafo5[4][4]); // 0
 			//			System.out.println("grafofinal100"+grafo100[1][0]); //12
 			//			System.out.println("grafofinal100"+grafo100[99][98]); // 81
 			//			System.out.println("grafofinal1000"+grafo1000[2][0]); // 53
@@ -91,7 +90,7 @@ public class Controller {
 		boolean fin = false;
 		int verticeInicial;
 		int Verticedestino;
-		int NoVertices;
+		int NoVertices= 4 ;
 		long TInicio, TFin, tiempo; 
 
 		while(!fin) {
@@ -106,7 +105,7 @@ public class Controller {
 
 				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3 o 4) \n 1. Grafo con 5 vertices \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices \n 4. Grafo con "+ numverticesgrafoextra + " vertices");
 				NoVertices = Integer.parseInt(lector.next());
-				
+
 				System.out.println("Seleccione el vertice Origen");
 				verticeInicial = Integer.parseInt(lector.next());
 
@@ -115,25 +114,25 @@ public class Controller {
 					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafo5, verticeInicial), grafo5.length,verticeInicial); 
 				}
 				else if(NoVertices==2) {
-					
+
 					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafo100, verticeInicial), grafo100.length,verticeInicial); 
-					
+
 				}
 				else if(NoVertices==3) {
 					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafo1000, verticeInicial), grafo1000.length,verticeInicial); 
-	
+
 				}
 				else if(NoVertices==4) {
-		
-					
+
+
 					dijkstra.Imprimir(dijkstra.DijkstraAlgoritmo(grafoextra, verticeInicial), grafoextra.length,verticeInicial); 
-	
+
 				}
 
 				TFin = System.currentTimeMillis(); 
 				tiempo = TFin - TInicio;
-			
-				
+
+
 				System.out.println("\n"+ "El tiempo que tardo el algoritmo fue de: "+tiempo+" milisegundos");	
 
 
@@ -144,7 +143,7 @@ public class Controller {
 
 			case 2:
 				System.out.println("Implementando el algoritmo de Bellman Ford");
-				
+
 				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3 o 4) \n 1. Grafo con 5 vertices \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices \n 4. Grafo con "+ numverticesgrafoextra + " vertices");
 				NoVertices = Integer.parseInt(lector.next());
 
@@ -157,17 +156,17 @@ public class Controller {
 					bellmanFord.Imprimir(bellmanFord.BellmanFordAlgoritmo(grafo5, verticeInicial), grafo5.length,verticeInicial); 
 				}
 				else if(NoVertices==2) {
-					
+
 					bellmanFord.Imprimir(bellmanFord.BellmanFordAlgoritmo(grafo100, verticeInicial), grafo100.length,verticeInicial); 
-					
+
 				}
 				else if(NoVertices==3) {
 					bellmanFord.Imprimir(bellmanFord.BellmanFordAlgoritmo(grafo1000, verticeInicial), grafo1000.length,verticeInicial); 
-	
+
 				}
 				else if(NoVertices==4) {
 					bellmanFord.Imprimir(bellmanFord.BellmanFordAlgoritmo(grafoextra, verticeInicial), grafoextra.length,verticeInicial); 
-	
+
 				}
 
 				TFin = System.currentTimeMillis(); 
@@ -182,7 +181,7 @@ public class Controller {
 				System.out.println("Implementando el algoritmo de Floyd Warschall");
 
 				System.out.println("Que grafo desea utilizar (escribir 1 o 2 o 3 o 4) \n 1. Grafo con 5 vertices \n 2. grafo con 100 vertices \n 3. Grafo con 1000 vertices \n 4. Grafo con "+ numverticesgrafoextra + " vertices");
-				NoVertices = Integer.parseInt(lector.next());
+      			NoVertices = Integer.parseInt(lector.next());
 
 
 				TInicio = System.currentTimeMillis();
@@ -193,17 +192,17 @@ public class Controller {
 				}
 				else if(NoVertices==2) {
 					floydWarschall.FloydWarschallAlgoritmo(grafo100, grafo100.length);
-					
+
 				}
 				else if(NoVertices==3) {
 					floydWarschall.FloydWarschallAlgoritmo(grafo1000, grafo1000.length);
-					
+
 				}
 				else if(NoVertices==4) {
 					floydWarschall.FloydWarschallAlgoritmo(grafoextra, grafoextra.length);
-	
+
 				}
-				
+
 				TFin = System.currentTimeMillis(); 
 				tiempo = TFin - TInicio;
 				System.out.println("El tiempo que tardo el algoritmo fue de: "+tiempo+" milisegundos");	
@@ -220,6 +219,28 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * Este metodo investiga el numero de vertices
+	 * 
+	 * @param nombreArchivo
+	 * @return Retorna un grafo de tamano especificado
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public int NumeroDeVertices( String nombreArchivo) throws FileNotFoundException, IOException{
+
+		int resp = 0;
+
+		try (FileReader reader = new FileReader(nombreArchivo);	
+				BufferedReader in = new BufferedReader(reader)) 
+		{
+			String line = in.readLine();				
+			String [] items = line.split("\t");
+			resp = items.length;
+
+			return resp;
+		}	
+	}
 
 
 
@@ -252,7 +273,7 @@ public class Controller {
 				for (int j = 0; j < tamano; j++) {
 					int valor = Integer.parseInt(items[j]);
 
-					grafo[i][j]= valor;			
+					grafo[i][j]= valor;		
 					//System.out.println("grafo"+grafo[i][j]);
 				}
 				line = in.readLine();

@@ -70,7 +70,7 @@ public class FloydWarschall {
 
 
 	/**
-	 * Metodo que imprime las distancias mas cortas desde un vertice origen hasta todos los vertices.
+	 * Metodo que imprime las distancias mas cortas desde todos los vertices hasta todos los vertices.
 	 * @param g grafo 
 	 * @param num_Vertices numero de vertices del grafo
 	 * @param ini Indice del grafo origen
@@ -81,10 +81,13 @@ public class FloydWarschall {
 			for (int j = 0; j < V; ++j) {
 
 				if (matrix[i][j] == INFINITO)
-					System.out.print("ERROR");
+					System.out.print("ERROR ");
 				else {
-					System.out.print(matrix[i][j] + "  ");
-					//System.out.println("La Distancia desde: ("+i+") Hasta: ("+ j + ") es de: " + matrix[i][j]); 
+					//System.out.print(matrix[i][j] + "  ");
+					if(i==94) {
+						System.out.println("La Distancia desde: ("+i+") Hasta: ("+ j + ") es de: " + matrix[i][j]); 
+						
+					}
 				}
 			}
 			System.out.println();
