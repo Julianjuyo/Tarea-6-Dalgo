@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Stack;
 
 public class Parte3 {
 
@@ -46,23 +47,23 @@ public class Parte3 {
 	private static boolean determinarCicloEnGrafoMatriz(int[][] matriz) {
 		
 		boolean[] marcados = new boolean[matriz.length];
-		int visitados=0;//los nodos siempre seran 1, 2, 3 ... n
-		for(int i = 0;visitados<matriz.length;)
+		
+		Stack<Integer> pila = new Stack<>();
+		for(int i = 0;pila.size()<matriz.length;)
 		{		
 			for(int j = 0;j<matriz.length;j++)
 			{
 				if(matriz[i][j]!=-1 && !marcados[i])
 				{
 					marcados[i]=true;
-					visitados++;
+					pila.push(i);
 					i=j;
 				}
-				else if(matriz[i][j]!=-1 && marcados[j])
+				else if(matriz[i][j]>-1 && marcados[j])
 				{
 					return true;
 				}
 			}
-			
 		}
 		return false;
 	}
