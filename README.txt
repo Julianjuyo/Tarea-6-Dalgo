@@ -69,7 +69,20 @@ Parte 2
     en cuenta los valores por debajo de la diagonal de la matriz, de esa forma es posible usar las matrices de adyacencia de los grafos dirigidos
     como si fueran no dirigidos (descartando los ejes existentes en la diagonal superior de la matriz).
 
+Suposiciones usadas en la implementación:
 
+1.  La matriz de carga es simétrica.
+2. Se permiten usar Estructuras de datos pertenecientes a Java.util (LinkedList, Queue)
+
+Resultados de la ejecución
+
+1.  En consola aprecerá el texto "Los componentes conectados son:". En las siguientes líneas se verá cada componente conectado listado (contando desde 0)
+    de la siguiente forma:
+
+    Componente Conectado #n
+        a	b	c	d	e	    
+    Componente Conectado #n+1
+        f   g   h   i   j   k
 Parte 3
 
 1.  La ruta del archivo que contiene la matriz se ingresa como argumento del programa, esto funciona por ejemplo ingresando "data/distances100.txt" 
@@ -88,6 +101,10 @@ Suposiciones usadas en la implementación:
     "Hay un ciclo en este grafo dirigido?" no tiene sentido, por lo que todas las matriz[v][v] se ignoran para el orden topológico.
     Se ignoran directamente porque suponemos que sí puede haber un caso en el cual ir de un vértice a otro no tenga costo alguno,
     es decir, un caso donde matriz[v][w] = 0 con v != w.
+
+3.  no es obligatorio hallar exactamente cual ciclo se halló, sólo indicar si existe uno.
+
+4.  Se permiten usar Estructuras de datos pertenecientes a Java.util (Stack)
 
 Resultados de la ejecución
 

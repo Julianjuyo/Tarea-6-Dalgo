@@ -33,7 +33,7 @@ public class Parte2 {
 				System.out.println("Componente Conectado #"+i);
 				for(int k:j)
 				{
-					System.out.append(k+"\t");
+					System.out.append("\t"+k);
 				}
 				System.out.append("\n");
 			i++;
