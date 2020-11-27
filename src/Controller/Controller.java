@@ -93,7 +93,6 @@ public class Controller {
 
 		boolean fin = false;
 		int verticeInicial;
-		int Verticedestino;
 		int NoVertices= 4 ;
 		long TInicio, TFin, tiempo; 
 
