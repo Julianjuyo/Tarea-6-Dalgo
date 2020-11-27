@@ -1,6 +1,9 @@
+Tarea 6 - ISIS 1105
+
+Julián Oliveros - je.olvierosf
+Camilo Rozo     - ce.rozob
+
 Para poder ejecutar el proyecto debe seguir los siguientes pasos.
-
-
 
 Para Ejecutar el punto 1
 
@@ -83,6 +86,8 @@ Resultados de la ejecución
         a	b	c	d	e	    
     Componente Conectado #n+1
         f   g   h   i   j   k
+
+        
 Parte 3
 
 1.  La ruta del archivo que contiene la matriz se ingresa como argumento del programa, esto funciona por ejemplo ingresando "data/distances100.txt" 
